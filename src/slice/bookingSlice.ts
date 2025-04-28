@@ -12,7 +12,7 @@ export const addBooking = createAsyncThunk(
     async (booking, { rejectWithValue }) => {
         try {
             console.log('Booking data in slice:', booking);
-            const response = await api.post('/add', booking);
+            const response = await api.post("/add", booking);
             return response.data;
         } catch (err) {
             return rejectWithValue(err.response?.data || 'Error saving booking');

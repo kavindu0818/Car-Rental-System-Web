@@ -2,10 +2,17 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, Sun, Moon, Car } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
+import Login from "../user/Login.tsx";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+
+  const openLoginForm = () =>{
+    setIsAddModalOpen(true);
+  }
 
   return (
     <nav className="bg-white dark:bg-gray-900 shadow-md fixed w-full top-0 z-50 transition-colors duration-300">
@@ -15,7 +22,7 @@ const Navbar: React.FC = () => {
             <Link to="/" className="flex-shrink-0 flex items-center">
               <Car className="h-8 w-8 text-indigo-900 dark:text-indigo-400" />
               <span className="ml-2 text-xl font-bold text-indigo-900 dark:text-white">
-                LuxeRentals
+                KMW CAR RENTAL
               </span>
             </Link>
           </div>
@@ -34,12 +41,14 @@ const Navbar: React.FC = () => {
             <Link to="/locations" className="text-gray-700 dark:text-gray-200 hover:text-indigo-800 dark:hover:text-indigo-400 px-3 py-2 rounded-md font-medium transition-colors">
               Locations
             </Link>
-            <Link
-                to="/login"
+            <button
+                onClick={openLoginForm}
                 className="bg-indigo-600 text-white hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 px-4 py-2 rounded-md font-medium transition-colors"
             >
               Login
-            </Link>
+            </button>
+
+            {isAddModalOpen && <Login onClose={() => setIsAddModalOpen(false)}/>}
 
             <button
               onClick={toggleTheme}
@@ -120,6 +129,7 @@ const Navbar: React.FC = () => {
         </div>
       )}
     </nav>
+
   );
 };
 

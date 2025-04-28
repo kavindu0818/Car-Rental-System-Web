@@ -108,7 +108,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ cars, onBookingSubmit }) => {
           address
       );
 
-      const bookingResult = await dispatch(addBooking(booking)).unwrap();
+      const bookingResult =  dispatch(addBooking(booking)).unwrap();
 
       if (bookingResult) {
         await dispatch(saveCustomer(customer)).unwrap();
