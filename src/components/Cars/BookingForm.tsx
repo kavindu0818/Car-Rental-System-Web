@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { Calendar, User, Mail, Phone, CreditCard, Check } from 'lucide-react';
 import {BookingDetails} from '../../types';
-import {useDispatch} from "react-redux";
-import {AppDispatch} from "../../store/Store.ts";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch, RootState} from "../../store/Store.ts";
 import {saveCustomer} from "../../slice/customersSlice.ts";
 import {Customer} from "../../model/Customer.ts";
 import {CarModel} from "../../model/CarModel.ts";
 import {BookingModel} from "../../model/BookingModel.ts";
 import {addBooking} from "../../slice/bookingSlice.ts";
+import { useNavigate } from 'react-router-dom';
+import {toast} from "react-toastify";
+import Login from "../user/Login.tsx";
+
 // import {data} from "autoprefixer";
 
 interface BookingFormProps {
@@ -22,6 +26,11 @@ const BookingForm: React.FC<BookingFormProps> = ({ cars, onBookingSubmit }) => {
   tomorrow.setDate(tomorrow.getDate() + 1);
   const tomorrowStr = tomorrow.toISOString().split('T')[0];
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
+  // const isAuthenticated = useSelector((state: any) => state.user.isAuthenticated.data);
+  const isAuthenticated = useSelector((state: any) => state.user.isAuthenticated);
+
 
 
   const [startDate, setStartDate] = useState(today);
@@ -33,6 +42,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ cars, onBookingSubmit }) => {
   const [license, setLicenceNumber] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
 
 
@@ -51,57 +61,80 @@ const BookingForm: React.FC<BookingFormProps> = ({ cars, onBookingSubmit }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    console.log("Checking authentication:", isAuthenticated);
+
+    if (!isAuthenticated) {
+      toast.info("🔒 Please login first to book a car.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+
+      // You can even store form data here temporarily if you want
+      localStorage.setItem('pendingBooking', JSON.stringify({
+        startDate,
+        endDate,
+        name,
+        email,
+        phone,
+        address,
+        license,
+        carId: cars.number + cars.name, // just an idea
+      }));
+
+      setIsAddModalOpen(true);
+      return;
+    }
+
     if (!cars.available) return;
 
     setIsSubmitting(true);
 
-    const status = "car booking";
-
-    // Create booking instance
-    const booking = new BookingModel(
-        cars.number + cars.name,
-        phone,
-        startDate,
-        endDate,
-        status,
-        calculateTotalPrice(),
-        cars.price
-    );
-
-    // Create customer instance
-    const customer = new Customer(
-        phone,
-        name,
-        email,
-        license,
-        address
-    );
-
     try {
-      // First dispatch booking
+      const booking = new BookingModel(
+          cars.number + cars.name,
+          phone,
+          startDate,
+          endDate,
+          "car booking",
+          calculateTotalPrice(),
+          cars.price
+      );
+
+      const customer = new Customer(
+          phone,
+          name,
+          email,
+          license,
+          address
+      );
+
       const bookingResult = await dispatch(addBooking(booking)).unwrap();
 
-      // If booking was successful, then add customer
       if (bookingResult) {
         await dispatch(saveCustomer(customer)).unwrap();
 
         setIsSuccess(true);
+        toast.success("✅ Booking and Customer saved successfully!", {
+          position: "top-right",
+          autoClose: 3000,
+        });
 
-        // Reset form after success
         setTimeout(() => {
-          setCustomerName('');
-          setCustomerEmail('');
-          setCustomerPhone('');
-          setIsSuccess(false);
+          navigate('/cars');
         }, 3000);
       }
     } catch (error) {
-      console.error('Submission failed:', error);
-      // Optionally handle error UI here
+      console.error('Booking failed:', error);
+      toast.error("⚠️ Booking failed. Please try again.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
     } finally {
       setIsSubmitting(false);
     }
   };
+
+
 
 
   if (!cars.available) {
@@ -299,6 +332,8 @@ const BookingForm: React.FC<BookingFormProps> = ({ cars, onBookingSubmit }) => {
           )}
         </button>
       </form>
+
+      {isAddModalOpen && <Login onClose={() => setIsAddModalOpen(false)}/>}
     </div>
   );
 };

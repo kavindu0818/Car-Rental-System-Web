@@ -34,6 +34,13 @@ const Navbar: React.FC = () => {
             <Link to="/locations" className="text-gray-700 dark:text-gray-200 hover:text-indigo-800 dark:hover:text-indigo-400 px-3 py-2 rounded-md font-medium transition-colors">
               Locations
             </Link>
+            <Link
+                to="/login"
+                className="bg-indigo-600 text-white hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 px-4 py-2 rounded-md font-medium transition-colors"
+            >
+              Login
+            </Link>
+
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none transition-colors"
