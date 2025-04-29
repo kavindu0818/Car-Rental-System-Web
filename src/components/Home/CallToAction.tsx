@@ -6,7 +6,7 @@ const CallToAction: React.FC = () => {
   return (
     <section className="py-16 bg-white dark:bg-gray-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-indigo-900 rounded-2xl overflow-hidden shadow-xl">
+        <div className="bg-blue-950 rounded-2xl overflow-hidden shadow-xl">
           <div className="relative">
             {/* Decorative elements */}
             <div className="absolute inset-0 overflow-hidden">

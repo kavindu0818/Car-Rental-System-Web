@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Calendar, Fuel, Settings, Users } from 'lucide-react';
-// import { Car } from '../../types';
 import {CarModel} from "../../model/CarModel.ts";
 
 interface CarCardProps {

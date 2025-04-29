@@ -38,7 +38,6 @@ const CarFilters: React.FC<CarFiltersProps> = ({ options, onFilterChange, active
     const newTransmission = activeFilters.transmission.includes(transmission)
       ? activeFilters.transmission.filter((t: string) => t !== transmission)
       : [...activeFilters.transmission, transmission];
-    
     onFilterChange({ ...activeFilters, transmission: newTransmission });
   };
 

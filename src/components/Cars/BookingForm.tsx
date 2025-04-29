@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Calendar, User, Mail, Phone, CreditCard, Check } from 'lucide-react';
 import {BookingDetails} from '../../types';
 import {useDispatch, useSelector} from "react-redux";
-import {AppDispatch, RootState} from "../../store/Store.ts";
+import {AppDispatch} from "../../store/Store.ts";
 import {saveCustomer} from "../../slice/customersSlice.ts";
 import {Customer} from "../../model/Customer.ts";
 import {CarModel} from "../../model/CarModel.ts";
@@ -12,7 +12,6 @@ import { useNavigate } from 'react-router-dom';
 import {toast} from "react-toastify";
 import Login from "../user/Login.tsx";
 
-// import {data} from "autoprefixer";
 
 interface BookingFormProps {
   cars: CarModel;
@@ -27,11 +26,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ cars, onBookingSubmit }) => {
   const tomorrowStr = tomorrow.toISOString().split('T')[0];
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-
-  // const isAuthenticated = useSelector((state: any) => state.user.isAuthenticated.data);
   const isAuthenticated = useSelector((state: any) => state.user.isAuthenticated);
-
-
 
   const [startDate, setStartDate] = useState(today);
   const [endDate, setEndDate] = useState(tomorrowStr);
@@ -43,8 +38,6 @@ const BookingForm: React.FC<BookingFormProps> = ({ cars, onBookingSubmit }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-
-
 
   const calculateTotalDays = () => {
     const start = new Date(startDate);
@@ -69,7 +62,6 @@ const BookingForm: React.FC<BookingFormProps> = ({ cars, onBookingSubmit }) => {
         autoClose: 3000,
       });
 
-      // You can even store form data here temporarily if you want
       localStorage.setItem('pendingBooking', JSON.stringify({
         startDate,
         endDate,

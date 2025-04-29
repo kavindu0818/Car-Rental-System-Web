@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
           <div>
             <div className="flex items-center mb-4">
               <Car className="h-8 w-8 text-indigo-400" />
-              <span className="ml-2 text-xl font-bold text-white">LuxeRentals</span>
+              <span className="ml-2 text-xl font-bold text-white">KMW CAR RENTAL</span>
             </div>
             <p className="mb-4">
               Premium car rental service with a wide range of vehicles to suit every need and occasion.
@@ -55,9 +55,9 @@ const Footer: React.FC = () => {
               <li>
                 <a href="#" className="hover:text-white transition-colors">Business Travel</a>
               </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">Airport Transfers</a>
-              </li>
+              {/*<li>*/}
+              {/*  <a href="#" className="hover:text-white transition-colors">Airport Transfers</a>*/}
+              {/*</li>*/}
               <li>
                 <a href="#" className="hover:text-white transition-colors">Wedding Car Rental</a>
               </li>
@@ -69,22 +69,22 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li className="flex items-start">
                 <MapPin size={18} className="mr-2 mt-0.5 flex-shrink-0 text-indigo-400" />
-                <span>123 Main Street, Downtown</span>
+                <span>123 Main Street, Colombo</span>
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="mr-2 flex-shrink-0 text-indigo-400" />
-                <span>(555) 123-4567</span>
+                <span>077 4257738</span>
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="mr-2 flex-shrink-0 text-indigo-400" />
-                <span>contact@luxerentals.com</span>
+                <span>contact@kmwcarrental.com</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm">
-          <p>&copy; {new Date().getFullYear()} LuxeRentals. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} KmwCarRental. All rights reserved.</p>
         </div>
       </div>
     </footer>

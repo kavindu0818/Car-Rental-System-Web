@@ -107,30 +107,32 @@
 //
 export const locations = [
   {
-    id: 1,
-    name: 'Downtown Office',
-    address: '123 Main Street, Downtown',
-    phone: '(555) 123-4567',
-    email: 'downtown@luxerentals.com',
-    hours: 'Mon-Fri: 8AM-8PM, Sat-Sun: 9AM-6PM',
-    coordinates: { lat: 40.7128, lng: -74.0060 }
-  },
-  {
     id: 2,
-    name: 'Airport Terminal',
-    address: 'International Airport, Terminal 3',
-    phone: '(555) 987-6543',
-    email: 'airport@luxerentals.com',
-    hours: 'Daily: 6AM-12AM',
-    coordinates: { lat: 40.6413, lng: -73.7781 }
-  },
-  {
-    id: 3,
-    name: 'Uptown Branch',
-    address: '456 Luxury Avenue, Uptown',
-    phone: '(555) 456-7890',
-    email: 'uptown@luxerentals.com',
-    hours: 'Mon-Sat: 9AM-7PM, Sun: 10AM-5PM',
-    coordinates: { lat: 40.8448, lng: -73.8648 }
+    name: 'Maharagama Office',
+    address: 'Main Street, Maharagama, Colombo',
+    phone: '077 4257738',
+    email: 'maharagama@kmwcarrental.com',
+    hours: 'Mon-Fri: 8AM-8PM, Sat-Sun: 9AM-6PM',
+    coordinates: { lat: 6.8498, lng: 79.9260 }
   }
+
+
+  // {
+  //   id: 2,
+  //   name: 'Airport Terminal',
+  //   address: 'International Airport, Terminal 3',
+  //   phone: '(555) 987-6543',
+  //   email: 'airport@luxerentals.com',
+  //   hours: 'Daily: 6AM-12AM',
+  //   coordinates: { lat: 40.6413, lng: -73.7781 }
+  // },
+  // {
+  //   id: 3,
+  //   name: 'Uptown Branch',
+  //   address: '456 Luxury Avenue, Uptown',
+  //   phone: '(555) 456-7890',
+  //   email: 'uptown@luxerentals.com',
+  //   hours: 'Mon-Sat: 9AM-7PM, Sun: 10AM-5PM',
+  //   coordinates: { lat: 40.8448, lng: -73.8648 }
+  // }
 ];

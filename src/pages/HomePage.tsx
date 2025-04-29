@@ -13,7 +13,7 @@ const HomePage: React.FC = () => {
       <Hero />
       <FeaturedCars />
       <Features />
-      <Testimonials />
+      {/*<Testimonials />*/}
       <CallToAction />
     </Layout>
   );
