@@ -15,9 +15,12 @@ A responsive and user-friendly POS (Point of Sale) interface developed with Reac
 Github Code :- https://github.com/kavindu0818/Car-Rental-Management-PosSytem.git
 
 
+
 ![Screenshot 2025-05-17 165936](https://github.com/user-attachments/assets/e5e6de14-2e02-4786-91c5-89c55d0f8be3)
 
-![Screenshot 2025-05-17 170026](https://github.com/user-attachments/assets/3db55e92-f791-4e9f-a26e-037a39a54647)
+
+![Screenshot 2025-05-17 170009](https://github.com/user-attachments/assets/f8fd9376-1476-49a7-9431-5680adfdef57)
+
 
 ![Screenshot 2025-05-17 170026](https://github.com/user-attachments/assets/6071f8bb-572f-4875-a234-629be2a707ca)
 
