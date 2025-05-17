@@ -13,6 +13,8 @@ Github Code :-  https://github.com/kavindu0818/Car-Rental-Backend-SpringBoot.git
 A responsive and user-friendly POS (Point of Sale) interface developed with React.js and styled using Tailwind CSS. The system enables efficient car management, booking management, and customer management. It communicates with the backend via Axios to perform real-time CRUD operations and provide seamless user interactions.
 
 Github Code :- https://github.com/kavindu0818/Car-Rental-Management-PosSytem.git
+
+
 ![Screenshot 2025-05-17 165936](https://github.com/user-attachments/assets/e5e6de14-2e02-4786-91c5-89c55d0f8be3)
 
 ![Screenshot 2025-05-17 170026](https://github.com/user-attachments/assets/3db55e92-f791-4e9f-a26e-037a39a54647)
